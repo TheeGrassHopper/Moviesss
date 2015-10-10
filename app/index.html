@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Wellcome to Alwan's Anguler project boo yaa</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -43,14 +43,29 @@
               <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/">Contact</a></li>
             </ul>
+            <h3 class="text-muted">Moviemania</h3>
           </div>
         </div>
       </div>
     </div>
+ <h1 ng-bind="title"></h1>
+     <div class="container">
+        <div ng-controller="MainCtrl"> 
+          <div ng-controller="SubCtrl">
+           
+          </div>
+          <div ng-repeat="movie in movies" style="float: left;">  
+           <h3 ng-bind="movie.title"></h3>
+           <img src="{{movie.image}}"  style="float: left;"/>
+           <div ng-bind="movie.description"></div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div ng-controller="FormCtrl">
+        TITLE: <input type="text" name="title">
+      </div>
 
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
 
     <div class="footer">
       <div class="container">
