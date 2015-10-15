@@ -25,11 +25,28 @@ angular.module('movieManiaApp')
 	    'description':	'Stevens ex-boyfriend Ted comes to town; a co-worker finds out. Fallon and Jeff elope; but to Fallon the marriage is a business deal'
 	    }];
 	    $scope.movies = movieList;
-  	}
-)
-	.controller('SubCtrl', function($scope){
-		$scope.title='Lots of Awesome movies Here: ' + $scope.movies.length ;
-	})
-	.controller('FormCtrl', function($scope) {
-  	console.log('hello this is a test');
-  });
+  		$scope.newMovieTitle='';
+  		$scope.newMoviedescription='';
+  		$scope.newMovieImage='';
+
+  		$scope.validateTitle= function(){
+  			if($scope.newMovieTitle.length > 0){
+  				console.debug($scope.newMovieTitle);
+  			} else{
+  	    	  window.alert('Title is Required');
+  				}
+  			};
+
+  		$scope.addMovie = function(){
+  			var movie = {
+  				title: $scope.newMovieTitle,
+  				category: $scope.newMovieCategory,
+  				image: $scope.newMovieImage,
+  				description: $scope.newMovieDescription
+  			};
+
+  			$scope.movies.push(movie);
+  		};
+
+  		$s
+  		}	

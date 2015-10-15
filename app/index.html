@@ -43,29 +43,53 @@
               <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/">Contact</a></li>
             </ul>
-            <h3 class="text-muted">Moviemania</h3>
           </div>
         </div>
       </div>
     </div>
- <h1 ng-bind="title"></h1>
-     <div class="container">
-        <div ng-controller="MainCtrl"> 
-          <div ng-controller="SubCtrl">
-           
-          </div>
-          <div ng-repeat="movie in movies" style="float: left;">  
-           <h3 ng-bind="movie.title"></h3>
-           <img src="{{movie.image}}"  style="float: left;"/>
-           <div ng-bind="movie.description"></div>
+
+     <h3 class="text-muted">Movie Mania</h3>
+      </div>
+      <div ng-controller="MainCtrl" class="row">
+        <div class="col-xs-8">
+          <h2>Movies</h2>
+          <div ng-repeat="movie in movies" style="clear: both;">
+            <img ng-src="{{movie.image}}" style="float: left; width: 80px; margin-right: 10px;">
+            <h3 ng-bind="movie.title"></h3>
+            <p style="font-size: 0.8em; font-style: italic;" ng-bind="movie.category">
+            <p ng-bind="movie.description"></p>
           </div>
         </div>
+        <div class="col-xs-4">
+          <h2>Add</h2>
+          <div class="form-group">
+            <label>Title</label>
+            <input class="form-control" placeholder="Enter title" ng-keyup="validateTitle()" ng-model="newMovieTitle">
+          </div>
+          <div class="form-group">
+            <label>Image</label>
+            <input class="form-control" placeholder="Image" ng-model="newMovieImage">
+            <div>
+              <h4>Preview</h4>
+              <img ng-src="{{newMovieImage}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select class="form-control" ng-change="checkCategorySelected()"ng-model="newMovieCategory">
+              <option value="">-</option>
+              <option value="Epic">Epic</option>
+              <option value="Awesome">Awesome</option>
+              <option value="Average">Average</option>
+            </select>
+          </div>
+          <div class="form-group" ng-model="newMovieCategory">
+            <label>Description</label>
+            <textarea class="form-control" ng-model="newMovieDescription" ng-blur="checkDescription()"></textarea>
+          </div>
+          <button class="btn btn-info" ng-click="addMovie()">Add</button>
+        </div>
       </div>
-      <br>
-      <div ng-controller="FormCtrl">
-        TITLE: <input type="text" name="title">
-      </div>
-
 
     <div class="footer">
       <div class="container">
